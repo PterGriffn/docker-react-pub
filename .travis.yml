@@ -1,0 +1,11 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t blankentim1/docker-react-pub -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true blankentim1/docker-react-pub npm run test
+
