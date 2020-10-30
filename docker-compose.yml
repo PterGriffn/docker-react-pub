@@ -1,0 +1,13 @@
+version: '3'
+services: 
+  web: # name of the service
+    build: 
+      context: . # location of the dockerfile (. = current dir)
+      dockerfile: Dockerfile.dev # specify the Dockerfile to use
+    ports:
+      - '3000:3000'
+    volumes:
+      - /app/node_modules  # do not map node_modules inside the container
+      - .:/app # map current dir (.) to /app folder inside container, so when we edit the sources locally it will be reflected inside container
+    stdin_open: true
+
